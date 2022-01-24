@@ -1,0 +1,11 @@
+res_seq = dlmread('C_seq.txt');
+res_pt = dlmread('C_pthread.txt');
+res_mpi = dlmread('C_mpi.txt');
+res_p_mpi = dlmread('C_py_mpi.txt');
+res_openmp = dlmread('C_openmp.txt');
+res_m = dlmread('C_matlab.txt');
+disp(sprintf('isequal(C_sequential, C_matlab) = %d', isequal(res_seq, res_m)))
+disp(sprintf('isequal(C_pthread, C_matlab) = %d', isequal(res_pt, res_m)))
+disp(sprintf('isequal(C_mpi, C_matlab) = %d', isequal(res_mpi, res_m)))
+disp(sprintf('isequal(C_py_mpi, C_matlab) = %d', isequal(res_p_mpi, res_m)))
+disp(sprintf('isequal(C_openmp, C_matlab) = %d', isequal(res_openmp, res_m)))
