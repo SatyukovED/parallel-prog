@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
     int n, i, j, k;
     long *A, *B, *C, temp;
     FILE *fpA, *fpB, *fpC;
-	struct timeval begin, end;
+    struct timeval begin, end;
 
     if (argc < 2) {
         printf("Program needs 1 argument: n\n");
@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
         }
     }
 
-	gettimeofday(&begin, NULL);
+    gettimeofday(&begin, NULL);
 
     for (i = 0; i <= n; i++) {
         for (j = 0; j < n; j++) {
@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
             for (k = 0; k < n; k++) {
                 temp += A[i * n + k] * B[j * n + k];
             }             
-	    C[i * n + j] = temp;
+	        C[i * n + j] = temp;
         }
     }
 	
@@ -71,9 +71,9 @@ int main(int argc, char *argv[]) {
     fclose(fpB);
     fclose(fpC);
     
-	free(A);
-	free(B);
-	free(C);
+    free(A);
+    free(B);
+    free(C);
 
     return 0;
 }

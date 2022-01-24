@@ -36,5 +36,8 @@ int main() {
     fclose(fpA);
     fclose(fpB);
 
+    free(A);
+    free(B);
+
     return 0;
 }

@@ -6,7 +6,7 @@
 int main(int argc, char *argv[]) {
     int n, procsNum, rowsByProc, i, j, k, procNum, procFirstRow, procLastRow;
     long *A, *B, *C, *buffer, *ans, temp;
-	struct timeval begin, end; 
+    struct timeval begin, end; 
 
     if (argc < 2) {
         printf("Program needs 1 argument: n\n");
@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
         FILE *fpA = fopen("./A.txt", "rb");
         FILE *fpB = fopen("./B.txt", "rb");
         FILE *fpC = fopen("./C_mpi.txt", "wb");
- 
+
         for (i = 0; i < n; i++) {
             for (j = 0; j < n; j++) {
                 fscanf(fpA, "%ld", &A[i * n + j]);
@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
             }
         }
 
-		gettimeofday(&begin, NULL);
+        gettimeofday(&begin, NULL);
 
         for (i = 1; i < procsNum; i++) {
             MPI_Send(B, n * n, MPI_LONG, i, 0, MPI_COMM_WORLD);
@@ -91,7 +91,7 @@ int main(int argc, char *argv[]) {
             }
         }
 
-		gettimeofday(&end, NULL);
+        gettimeofday(&end, NULL);
     	printf("Time of calculating matrix C = %f seconds\n", (double)(end.tv_usec - begin.tv_usec) / 1000000 + (double) (end.tv_sec - begin.tv_sec));
 
         for (i = 0; i < n; i++) {
@@ -101,13 +101,13 @@ int main(int argc, char *argv[]) {
             fprintf(fpC, "\n");
         }
         
-		fclose(fpA);
-		fclose(fpB);
-		fclose(fpC);
-		
-		free(A);
-		free(B);
-		free(C);
+        fclose(fpA);
+        fclose(fpB);
+        fclose(fpC);
+
+        free(A);
+        free(B);
+        free(C);
         free(buffer);
         free(ans);
 

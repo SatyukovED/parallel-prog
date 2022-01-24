@@ -27,7 +27,7 @@ if proc_num == 0:
 		A = np.array([[np.int64(v) for v in line.split()] for line in A_file], dtype=np.int64)
 	with open('./B.txt', 'r') as B_file:
 		B = np.array([[np.int64(v) for v in line.split()] for line in B_file], dtype=np.int64)
-	
+
 	for i in range(0, n):
 		for j in range(i + 1, n):
 			temp = B[i, j]
@@ -42,7 +42,7 @@ if proc_num == 0:
 		proc_last_row = proc_first_row + rows_by_proc
 		buf = A[proc_first_row:proc_last_row]
 		comm.Send([buf, MPI.LONG], dest=i, tag=1)
-    
+	  
 	for i in range(1, procs_num):
 		comm.Recv([ans, MPI.LONG], source=i, tag=2)
 		proc_first_row = i * rows_by_proc
@@ -59,9 +59,9 @@ if proc_num == 0:
 else:
 	comm.Recv([B, MPI.LONG], source=0, tag=0)
 	comm.Recv([buf, MPI.LONG], source=0, tag=1)
-	
+
 	for i in range(rows_by_proc):
 		for j in range(n):
 			ans[i, j] = sum(buf[i] * B[j])
-    
+	  
 	comm.Send([ans, MPI.LONG], dest=0, tag=2)

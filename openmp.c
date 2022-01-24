@@ -7,11 +7,11 @@ int main(int argc, char *argv[]) {
     int n, threadsNum, rowsByThread, i, j, k, threadNum, threadFirstRow, threadLastRow;
     long *A, *B, *C, temp;
     FILE *fpA, *fpB, *fpC;
-	struct timeval begin, end;
+    struct timeval begin, end;
 
     if (argc < 3) {
-		printf("Program needs 2 arguments: n and threadsNum\n");
-		return 1;
+        printf("Program needs 2 arguments: n and threadsNum\n");
+        return 1;
     } else {
     	n = atoi(argv[1]);
         threadsNum = atoi(argv[2]); 
@@ -83,9 +83,9 @@ int main(int argc, char *argv[]) {
     fclose(fpB);
     fclose(fpC);
     
-	free(A);
-	free(B);
-	free(C);
+    free(A);
+    free(B);
+    free(C);
 
     return 0;
 }
