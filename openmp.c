@@ -69,7 +69,7 @@ int main(int argc, char *argv[]) {
         }
     }
 
-	gettimeofday(&end, NULL);
+    gettimeofday(&end, NULL);
     printf("Time of calculating matrix C = %f seconds\n", (double)(end.tv_usec - begin.tv_usec) / 1000000 + (double) (end.tv_sec - begin.tv_sec));
 
     for (i = 0; i < n; i++) {
